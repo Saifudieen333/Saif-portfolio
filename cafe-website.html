@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Brew Haven - Artisan Coffee & Fresh Pastries">
+    <title>Brew Haven - Artisan Coffee & Fresh Pastries</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS for Cafe Website -->
+    <style>
+        :root {
+            --primary-green: #2ecc71;
+            --dark-green: #27ae60;
+            --black: #1a1a1a;
+            --dark-gray: #2c3e50;
+            --light-gray: #f8f9fa;
+            --white: #ffffff;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+            color: var(--black);
+        }
+
+        /* Navigation */
+        .navbar {
+            background: rgba(26, 26, 26, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            padding: 1rem 0;
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            background: var(--black);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar-brand {
+            color: var(--primary-green) !important;
+            font-weight: 700;
+            font-size: 1.8rem;
+        }
+
+        .nav-link {
+            color: var(--white) !important;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-link:hover {
+            color: var(--primary-green) !important;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background:
+                linear-gradient(rgba(26, 26, 26, 0.85), rgba(26, 26, 26, 0.7)),
+                url("https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1920&q=80");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: var(--white);
+            padding: 120px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(46, 204, 113, 0.1) 0%, rgba(39, 174, 96, 0.05) 100%);
+            z-index: 0;
+        }
+
+        .hero-section .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            background: var(--primary-green);
+            color: var(--white);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            display: inline-block;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.4);
+        }
+
+        /* Menu Section */
+        .menu-section {
+            padding: 100px 0;
+            background: var(--light-gray);
+        }
+
+        .menu-item {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 2rem;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+            border-color: var(--primary-green);
+        }
+
+        .menu-item .price {
+            color: var(--primary-green);
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .menu-item h4 {
+            color: var(--dark-gray);
+            margin-bottom: 0.5rem;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .about-image {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+            margin-bottom: 2rem;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Hours Section */
+        .hours-section {
+            background: linear-gradient(135deg, var(--black) 0%, var(--dark-gray) 100%);
+            color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hours-card {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hours-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .hours-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hours-list li:last-child {
+            border-bottom: none;
+        }
+
+        .hours-list span {
+            font-weight: 600;
+            color: var(--primary-green);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 100px 0;
+            background: var(--light-gray);
+        }
+
+        .contact-info {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-info i {
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+        }
+
+        .contact-info h4 {
+            color: var(--dark-gray);
+            margin-bottom: 1rem;
+        }
+
+        .btn-order {
+            background: var(--primary-green);
+            color: var(--white);
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.4);
+        }
+
+        .btn-order:hover {
+            background: var(--dark-green);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(46, 204, 113, 0.6);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--black);
+            color: rgba(255, 255, 255, 0.6);
+            padding: 3rem 0 1.5rem;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            color: var(--white);
+            font-size: 1.8rem;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            color: var(--primary-green);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 80px 0;
+            }
+
+            .menu-section,
+            .about-section,
+            .contact-section {
+                padding: 60px 0;
+            }
+
+            .hours-section {
+                padding: 60px 0;
+            }
+
+            .contact-info {
+                padding: 2rem;
+            }
+
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">☕ Brew Haven</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#hours">Hours</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item"><a class="nav-link btn btn-outline-light ms-2" href="index.html">← Back to Portfolio</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-badge">Artisan Coffee & Fresh Pastries</div>
+            <h1 class="display-3 fw-bold mb-4">Where Every Cup Tells a Story</h1>
+            <p class="lead mb-4">Experience the perfect blend of premium coffee and homemade treats in a cozy, modern atmosphere.</p>
+            <a href="#menu" class="btn btn-success btn-lg px-5 py-3">View Menu</a>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu-section">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-5" style="color: var(--dark-gray);">Our Menu</h2>
+            <div class="row">
+                <!-- Coffee Items -->
+                <div class="col-lg-6">
+                    <h3 class="mb-4" style="color: var(--primary-green);">☕ Coffee & Beverages</h3>
+
+                    <div class="menu-item">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h4 class="mb-0">Espresso</h4>
+                            <span class="price">$3.50</span>
+                        </div>
+                        <p class="text-muted mb-0">Rich and intense, our signature espresso shot</p>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h4 class="mb-0">Cappuccino</h4>
+                            <span class="price">$4.75</span>
+                        </div>
+                        <p class="text-muted mb-0">Espresso with steamed milk and velvety foam</p>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h4 class="mb-0">Cold Brew</h4>
+                            <span class="price">$5.00</span>
+                        </div>
+                        <p class="text-muted mb-0">Smooth, low-acid coffee steeped for 24 hours</p>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h4 class="mb-0">Matcha Latte</h4>
+                            <span class="price">$5.50</span>
+                        </div>
+                        <p class="text-muted mb-0">Premium matcha with steamed milk and honey</p>
+                    </div>
+                </div>
+
+                <!-- Food Items -->
+                <div class="col-lg-6">
+                    <h3 class="mb-4" style="color: var(--primary-green);">🥐 Pastries & Treats</h3>
+
+                    <div class="menu-item">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h4 class="mb-0">Croissant</h4>
+                            <span class="price">$3.25</span>
+                        </div>
+                        <p class="text-muted mb-0">Buttery, flaky, and freshly baked daily</p>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h4 class="mb-0">Avocado Toast</h4>
+                            <span class="price">$8.50</span>
+                        </div>
+                        <p class="text-muted mb-0">Sourdough toast with smashed avocado and poached egg</p>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h4 class="mb-0">Chocolate Chip Cookie</h4>
+                            <span class="price">$2.75</span>
+                        </div>
+                        <p class="text-muted mb-0">Warm, gooey, and made with premium chocolate</p>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h4 class="mb-0">Breakfast Sandwich</h4>
+                            <span class="price">$7.00</span>
+                        </div>
+                        <p class="text-muted mb-0">Egg, cheese, and bacon on a fresh bagel</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=800&q=80" alt="Coffee shop interior with cozy seating and warm lighting">
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="fw-bold mb-4" style="color: var(--dark-gray);">Our Story</h2>
+                    <p class="lead mb-4">
+                        Brew Haven opened its doors in 2020 with a simple mission: to serve exceptional coffee in a welcoming space where community thrives.
+                    </p>
+                    <p class="mb-4">
+                        Every bean is carefully sourced from sustainable farms, and every pastry is baked fresh daily in our kitchen. We believe that great coffee should be accessible to everyone.
+                    </p>
+                    <p>
+                        Whether you're starting your day, meeting friends, or working remotely, we've created the perfect spot for you to relax and enjoy life's simple pleasures.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hours Section -->
+    <section id="hours" class="hours-section">
+        <div class="container">
+            <h2 class="fw-bold mb-5">Opening Hours</h2>
+            <div class="hours-card">
+                <ul class="hours-list">
+                    <li>Monday - Friday <span>7:00 AM - 8:00 PM</span></li>
+                    <li>Saturday <span>8:00 AM - 9:00 PM</span></li>
+                    <li>Sunday <span>9:00 AM - 6:00 PM</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-5" style="color: var(--dark-gray);">Visit Us</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="contact-info text-center">
+                        <i class="bi bi-geo-alt-fill d-block mb-3">📍</i>
+                        <h4>Address</h4>
+                        <p class="mb-4">123 Main Street, Downtown<br>New York, NY 10001</p>
+
+                        <i class="bi bi-telephone-fill d-block mb-3">📞</i>
+                        <h4>Phone</h4>
+                        <p class="mb-4">(212) 555-1234</p>
+
+                        <i class="bi bi-envelope-fill d-block mb-3">✉️</i>
+                        <h4>Email</h4>
+                        <p class="mb-4">hello@brewhaven.com</p>
+
+                        <a href="#" class="btn-order">Order Online</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="social-links">
+                <a href="#" aria-label="Instagram">📱</a>
+                <a href="#" aria-label="Facebook">📘</a>
+                <a href="#" aria-label="Twitter">🐦</a>
+            </div>
+            <p class="mb-0">© 2026 Brew Haven Coffee. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Navbar scroll effect -->
+    <script>
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
