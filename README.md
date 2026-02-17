@@ -125,7 +125,7 @@ While this is a personal portfolio, feel free to:
 🐛 Report bugs or suggest improvements
 💡 Share ideas for new features
 📧 Contact
-📧 Email: saif@example.com
+📧 Email: saifudien.eslam@gmail.com
 💼 Available for: Freelance projects and collaborations
 🌐 Portfolio: saif.dev (replace with your actual URL)
 📜 License
